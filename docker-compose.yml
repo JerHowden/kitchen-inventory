@@ -13,7 +13,11 @@ services:
     build: ./react-container
     ports:
       - "3000:3000"
+    volumes:
+      - ./react-container:/app/
+      - /app/node_modules
     links:
       - api
+    environment:
+      - CHOKIDAR_USEPOLLING=true
     stdin_open: true
-    tty: true
