@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    image: kitchen-inventory-frontend
+    build: ./react-container
+    ports:
+      - "3000:3000"
+  api:
+    image: kitchen-inventory-backend
+    build: ./backend-container
+    ports:
+      - "4000:80"
