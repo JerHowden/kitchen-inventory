@@ -1,10 +1,16 @@
-version: '3'
+version: "3"
+
 services:
+
   web:
     image: kitchen-inventory-frontend
     build: ./react-container
     ports:
       - "5000:5000"
+    links:
+      - api
+    stdin_open: true
+
   api:
     image: kitchen-inventory-backend
     build: ./backend-container
