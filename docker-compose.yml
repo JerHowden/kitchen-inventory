@@ -2,6 +2,12 @@ version: "3"
 
 services:
 
+  api:
+    image: kitchen-inventory-backend
+    build: ./backend-container
+    ports:
+      - "4000:80"
+
   web:
     image: kitchen-inventory-frontend
     build: ./react-container
@@ -10,9 +16,4 @@ services:
     links:
       - api
     stdin_open: true
-
-  api:
-    image: kitchen-inventory-backend
-    build: ./backend-container
-    ports:
-      - "4000:80"
+    tty: true
