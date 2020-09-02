@@ -4,7 +4,7 @@ services:
     image: kitchen-inventory-frontend
     build: ./react-container
     ports:
-      - "3000:3000"
+      - "5000:5000"
   api:
     image: kitchen-inventory-backend
     build: ./backend-container

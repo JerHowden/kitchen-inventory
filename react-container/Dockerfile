@@ -1,6 +1,8 @@
 # Docker Image which is used as foundation to create
 # a custom Docker Image with this Dockerfile
 FROM node:14-alpine
+
+RUN npm i -g serve
  
 # A directory within the virtualized Docker environment
 # Becomes more relevant when using Docker Compose later
@@ -14,9 +16,12 @@ RUN npm install
  
 # Copies everything over to Docker environment
 COPY . .
+
+# Builds prod image
+RUN npm run build
  
 # Uses port which is used by the actual application
-EXPOSE 3000
+EXPOSE 5000
 
 # Finally runs the application
-CMD [ "npm", "start" ]
+CMD [ "serve", "-s", "build" ]
